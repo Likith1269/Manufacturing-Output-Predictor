@@ -24,7 +24,7 @@ if st.button("Predict"):
     }
 
     try:
-        response = requests.post("http://127.0.0.1:8000/predict", json=data)
+response = requests.post("https://manufacturing-output-predictor.onrender.com/predict", json=data)
         result = response.json()
         st.success(f"Predicted Parts Per Hour: {result['Predicted_Parts_Per_Hour']}")
     except:
