@@ -5,8 +5,16 @@ import joblib
 app = FastAPI()
 
 # Load model and columns
-model = joblib.load("../model/manufacturing_model.pkl")
-columns = joblib.load("../model/columns.pkl")
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+model_path = os.path.join(BASE_DIR, "model", "manufacturing_model.pkl")
+columns_path = os.path.join(BASE_DIR, "model", "columns.pkl")
+
+model = joblib.load(model_path)
+columns = joblib.load(columns_path)
+
 
 @app.get("/")
 def home():
